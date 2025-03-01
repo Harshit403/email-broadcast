@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Broadcast</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+    <h2>Email Broadcast Admin Panel</h2>
+
+    <!-- Create Group Form -->
+    <h4>Create Group</h4>
+    <form action="/create_group/" method="post" class="mb-4">
+        <input type="text" name="name" class="form-control mb-2" placeholder="Group Name" required>
+        <textarea name="emails" class="form-control mb-2" placeholder="Emails (comma-separated)" required></textarea>
+        <button type="submit" class="btn btn-primary">Create Group</button>
+    </form>
+
+    <!-- Broadcast Email Form -->
+    <h4>Send Broadcast Email</h4>
+    <form action="/broadcast/" method="post" class="mb-4">
+        <select name="group_name" class="form-control mb-2">
+            {% for group in groups.keys() %}
+                <option value="{{ group.split(':')[1] }}">{{ group.split(':')[1] }}</option>
+            {% endfor %}
+        </select>
+        <input type="text" name="subject" class="form-control mb-2" placeholder="Email Subject" required>
+        <textarea name="message" class="form-control mb-2" placeholder="Email Message" required></textarea>
+        <select name="format_type" class="form-control mb-2">
+            <option value="html">HTML</option>
+            <option value="markdown">Markdown</option>
+        </select>
+        <button type="submit" class="btn btn-success">Send Broadcast</button>
+    </form>
+
+    <a href="/logs/" class="btn btn-warning">Download Logs</a>
+</body>
+</html>
