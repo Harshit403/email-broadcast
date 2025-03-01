@@ -25,7 +25,7 @@ logging.basicConfig(filename="logs.txt", level=logging.INFO, format="%(asctime)s
 # Upstash Redis Connection
 UPSTASH_REDIS_URL = os.getenv("UPSTASH_REDIS_URL")
 UPSTASH_REDIS_PASSWORD = os.getenv("UPSTASH_REDIS_PASSWORD")
-redis_client = redis.Redis.from_url(UPSTASH_REDIS_URL, password=UPSTASH_REDIS_PASSWORD, decode_responses=True)
+redis_client = redis.Redis.from_url(UPSTASH_REDIS_URL, password=UPSTASH_REDIS_PASSWORD, decode_responses=True, ssl=True)
 
 # SMTP Configuration
 SMTP_SERVER = os.getenv("SMTP_SERVER")
