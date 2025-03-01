@@ -1,0 +1,7 @@
+fastapi
+jinja2
+redis
+mistune
+aiosmtplib
+uvicorn
+python-dotenv
